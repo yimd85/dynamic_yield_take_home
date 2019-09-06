@@ -5,6 +5,7 @@ var numClickedBox = clickedBox.length;
 var addToBagClicked = document.getElementsByClassName("c-pwa-add-to-bag");
 var numAddToBag = addToBagClicked.length;
 
+//local storage add
 if (localStorage.getItem("CSE_Challenge") === null) {
   localStorage.setItem(
     "CSE_Challenge",
@@ -18,6 +19,7 @@ if (localStorage.getItem("CSE_Challenge") === null) {
   );
 }
 
+//product view event handler and increase in local storage count
 for (var i = 0; i < numClickedBox; i++) {
   clickedBox[i].className += ` ${clickedBox[i].dataset.gaEventAction}`;
   clickedBox[i].addEventListener("click", function(event) {
@@ -32,6 +34,7 @@ for (var i = 0; i < numClickedBox; i++) {
     );
   });
 }
+
 
 if (
   window.location.href.indexOf("https://www.urbanoutfitters.com/shop/") > -1 &&
@@ -49,6 +52,7 @@ if (
   localStorage.setItem("CSE_Challenge", JSON.stringify(final_tally));
 }
 
+//add to bag event handler and increase in local storage count
 for (var i = 0; i < numAddToBag; i++) {
   var add_to_be_update = JSON.parse(localStorage.getItem("CSE_Challenge"))[
     `${localStorage.getItem("CSE_clicked_on")}`
@@ -63,6 +67,8 @@ for (var i = 0; i < numAddToBag; i++) {
   });
 }
 
+
+//Reordering rows
 document.getElementsByClassName("dom-landing-page-modules")[0].style.display =
   "flex";
 document.getElementsByClassName("dom-landing-page-modules")[0].style[
